@@ -18,10 +18,12 @@ jobs:
           lfs: true # If you're using Git LFS for .ase files
 
       # 2. Install Aseprite (using CLI build)
-      - name: Install Aseprite CLI
+      # 2. Download Aseprite CLI
+      - name: Download Aseprite CLI
         run: |
-          sudo apt-get update
-          sudo apt-get install -y aseprite
+          wget https://github.com/aseprite/aseprite/releases/download/v1.3.5/Aseprite-v1.3.5-linux.tar.xz
+          tar -xf Aseprite-v1.3.5-linux.tar.xz
+          sudo mv aseprite /usr/local/bin/aseprite
 
       # 3. Export assets
       - name: Export PNGs from .ase files
